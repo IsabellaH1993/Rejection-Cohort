@@ -3,3 +3,4 @@
 *.rds
 /Old Analysis
 .DS_Store
+.Rproj.user

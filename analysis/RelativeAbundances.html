@@ -361,7 +361,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -372,8 +372,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -382,16 +382,16 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-05-22
+<strong>Last updated:</strong> 2025-05-23
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 2
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>CarTransLateRej/</code> <span
+<strong>Knit directory:</strong> <code>Rejection-Cohort/</code> <span
 class="glyphicon glyphicon-question-sign" aria-hidden="true"
 title="This is the local directory in which the code in this file was executed.">
 </span>
@@ -411,21 +411,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -501,56 +498,30 @@ run.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongabsolute">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>File paths:</strong> absolute </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
 </p>
 </div>
-<div id="strongFilepathsstrongabsolute" class="panel-collapse collapse">
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
 <div class="panel-body">
-<p>
-Using absolute paths to the files within your workflowr project makes it
-difficult for you and others to run your code on a different machine.
-Change the absolute path(s) below to the suggested relative path(s) to
-make your code more reproducible.
-</p>
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th style="text-align:left;">
-absolute
-</th>
-<th style="text-align:left;">
-relative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-/Users/immbio/Desktop/CarTransLateRej/data/CarTransLateRej_allmerged_seurat.rds
-</td>
-<td style="text-align:left;">
-data/CarTransLateRej_allmerged_seurat.rds
-</td>
-</tr>
-</tbody>
-</table>
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomangeldemartinCarTransLateRejtree31451570f3fc44a2edd9160b0601d3010ee9f54ftargetblank3145157a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomIsabellaH1993RejectionCohorttree16d4d1d5bec3d0b0bfae0ca9cc00f17d7f440996targetblank16d4d1da">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/angeldemartin/CarTransLateRej/tree/31451570f3fc44a2edd9160b0601d3010ee9f54f" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/tree/16d4d1d5bec3d0b0bfae0ca9cc00f17d7f440996" target="_blank">16d4d1d</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomangeldemartinCarTransLateRejtree31451570f3fc44a2edd9160b0601d3010ee9f54ftargetblank3145157a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomIsabellaH1993RejectionCohorttree16d4d1d5bec3d0b0bfae0ca9cc00f17d7f440996targetblank16d4d1da"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -560,7 +531,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/angeldemartin/CarTransLateRej/tree/31451570f3fc44a2edd9160b0601d3010ee9f54f" target="_blank">3145157</a>.
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/tree/16d4d1d5bec3d0b0bfae0ca9cc00f17d7f440996" target="_blank">16d4d1d</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -575,38 +546,64 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .DS_Store
-    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    analysis/.DS_Store
+    Ignored:    Old Analysis/
     Ignored:    analysis/.RData
-    Ignored:    analysis/.Rhistory
-    Ignored:    data/
-
-Untracked files:
-    Untracked:  Old Analysis/
-    Untracked:  analysis/Dotplot_0.25.pdf
-    Untracked:  analysis/markerGenesclusterName
-    Untracked:  analysis/markerGenesclusterName_0.25
-    Untracked:  analysis/markerGenesclusterName_0.25.txt
-    Untracked:  analysis/markerGenesclusterName_0.25.xlsx
+    Ignored:    analysis/markerGenesclusterName_0.25.xlsx
+    Ignored:    data/CarTransLateRej_allmerged_seurat.rds
+    Ignored:    data/seurat_files/336431_11-11_20231129_Hu_nucseq_USZ_EMB006_V1_seurat.rds
+    Ignored:    data/seurat_files/336431_12-12_20231129_Hu_nucseq_USZ_EMB007_V1_seurat.rds
+    Ignored:    data/seurat_files/336431_15-15_20231129_Hu_nucseq_USZ_EMB004_V1_seurat.rds
+    Ignored:    data/seurat_files/340821_01-7_20240118_Hu_nucseq_USZ_EMB007_V2_seurat.rds
+    Ignored:    data/seurat_files/340821_06-12_20240123_Hu_nucseq_USZ_EMB004_V3_seurat.rds
+    Ignored:    data/seurat_files/340821_08-14_20240123_Hu_nucseq_USZ_EMB006_V3_seurat.rds
+    Ignored:    data/seurat_files/340821_09-15_20240123_Hu_nucseq_USZ_EMB007_V3_seurat.rds
+    Ignored:    data/seurat_files/340831_4-4_20240118_Hu_nucseq_USZ_EMB004_V2_seurat.rds
+    Ignored:    data/seurat_files/340831_6-6_20240118_Hu_nucseq_USZ_EMB006_V2_seurat.rds
+    Ignored:    data/seurat_files/372561_08-8_20241204_Hu_nucseq_USZ_HTx004_VX1_seurat.rds
+    Ignored:    data/seurat_files/372561_09-9_20241204_Hu_nucseq_USZ_HTx004_VX2_seurat.rds
+    Ignored:    data/seurat_files/372561_10-10_20241204_Hu_nucseq_USZ_HTx007_V4_seurat.rds
+    Ignored:    data/seurat_files/372561_11-11_20241204_Hu_nucseq_USZ_HTx007_VX1_seurat.rds
+    Ignored:    data/seurat_files/372561_12-12_20241204_Hu_nucseq_USZ_HTx007_VX2_seurat.rds
+    Ignored:    data/seurat_files/372561_13-13_20241204_Hu_nucseq_USZ_HTx007_V5_seurat.rds
+    Ignored:    data/seurat_files/373291_09-1_20241212_Hu_nucseq_USZ_HTx006_V4_seurat.rds
+    Ignored:    data/seurat_files/373291_10-2_20241212_Hu_nucseq_USZ_HTx006_V5_seurat.rds
+    Ignored:    data/seurat_files/373291_11-3_20241212_Hu_nucseq_USZ_HTx006_VX1_seurat.rds
+    Ignored:    data/seurat_files/373291_12-4_20241212_Hu_nucseq_USZ_HTx006_VX2_seurat.rds
+    Ignored:    data/seurat_files/373291_13-5_20241212_Hu_nucseq_USZ_HTx006_VX3_seurat.rds
+    Ignored:    data/seurat_files/373291_16-8_20241212_Hu_nucseq_USZ_HTx018_V1_seurat.rds
+    Ignored:    data/seurat_files/373291_17-9_20241212_Hu_nucseq_USZ_HTx018_V2_seurat.rds
+    Ignored:    data/seurat_files/373291_18-10_20241212_Hu_nucseq_USZ_HTx018_V3_seurat.rds
+    Ignored:    data/seurat_files/373291_19-11_20241212_Hu_nucseq_USZ_HTx018_V4_seurat.rds
+    Ignored:    data/seurat_files/373291_20-12_20241212_Hu_nucseq_USZ_HTx018_VX1_seurat.rds
+    Ignored:    data/seurat_files/373291_21-13_20241212_Hu_nucseq_USZ_HTx004_V4_seurat.rds
+    Ignored:    data/seurat_files/373291_22-14_20241212_Hu_nucseq_USZ_HTx004_V5_seurat.rds
+    Ignored:    data/seurat_files/384091_01-1_20250423_Hu_nucseq_USZ_HTx019_V1_seurat.rds
+    Ignored:    data/seurat_files/384091_02-2_20250423_Hu_nucseq_USZ_HTx019_V2_seurat.rds
+    Ignored:    data/seurat_files/384091_03-3_20250423_Hu_nucseq_USZ_HTx019_V3_seurat.rds
+    Ignored:    data/seurat_files/384091_04-4_20250423_Hu_nucseq_USZ_HTx019_VX1_seurat.rds
+    Ignored:    data/seurat_files/384091_05-5_20250423_Hu_nucseq_USZ_HTx002_VX2_seurat.rds
+    Ignored:    data/seurat_files/384091_06-6_20250423_Hu_nucseq_USZ_HTx002_VX3_seurat.rds
+    Ignored:    data/seurat_files/384091_07-7_20250423_Hu_nucseq_USZ_HTx007_VX3_seurat.rds
+    Ignored:    data/seurat_files/384091_08-8_20250423_Hu_nucseq_USZ_HTx007_VX4_seurat.rds
+    Ignored:    data/seurat_files/384091_09-9_20250423_Hu_nucseq_USZ_HTx008_VX2_seurat.rds
+    Ignored:    data/seurat_files/384091_10-10_20250423_Hu_nucseq_USZ_HTx008_VX3_seurat.rds
+    Ignored:    data/seurat_files/384091_11-11_20250423_Hu_nucseq_USZ_HTx018_VX2_seurat.rds
+    Ignored:    data/seurat_files/o28576_1_08-8_20220525_Hu_nucseq_Graz_8_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o28576_1_10-10_20220525_Hu_nucseq_Graz_10_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o28576_1_11-11_20220525_Hu_nucseq_Graz_11_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o28576_1_12-12_20220525_Hu_nucseq_Graz_12_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o292731_1-1_20220818_Hu_nucseq_Graz_9_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o292731_2-2_20220818_Hu_nucseq_Graz_13_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o294781_01-1_20220912_Hu_nucseq_Graz_21_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o294781_02-2_20220912_Hu_nucseq_Graz_22_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o294781_03-3_20220912_Hu_nucseq_Graz_23_HH_GEM_seurat.rds
+    Ignored:    data/seurat_files/o294781_04-4_20220912_Hu_nucseq_Graz_24_HH_GEM_seurat.rds
 
 Unstaged changes:
-    Modified:   .Rprofile
-    Modified:   .gitattributes
+    Modified:   .DS_Store
     Modified:   .gitignore
-    Modified:   CarTransLateRej.Rproj
-    Modified:   README.md
-    Modified:   _workflowr.yml
-    Modified:   analysis/MarkerGenes.Rmd
-    Modified:   analysis/Merge-QC-UMAPS.Rmd
-    Modified:   analysis/RelativeAbundances.Rmd
-    Modified:   analysis/_site.yml
-    Modified:   analysis/about.Rmd
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/license.Rmd
-    Modified:   code/README.md
-    Modified:   output/README.md
+    Modified:   analysis/.DS_Store
 
 </code></pre>
 <p>
@@ -656,33 +653,16 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/analysis/RelativeAbundances.Rmd" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/16d4d1d5bec3d0b0bfae0ca9cc00f17d7f440996/analysis/RelativeAbundances.Rmd" target="_blank">16d4d1d</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 <td>
-Feb25-2
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/angeldemartin/CarTransLateRej/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/RelativeAbundances.html" target="_blank">3145157</a>
-</td>
-<td>
-angeldemartin
-</td>
-<td>
-2025-02-21
-</td>
-<td>
-Feb25-2
+update RMD
 </td>
 </tr>
 <tr>
@@ -690,16 +670,33 @@ Feb25-2
 Rmd
 </td>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/7af6134bf73537f67f20d1a130a317f84ab87a8d/analysis/RelativeAbundances.Rmd" target="_blank">7af6134</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/analysis/RelativeAbundances.Rmd" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 <td>
-Feb25
+initial push
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/IsabellaH1993/Rejection-Cohort/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/RelativeAbundances.html" target="_blank">12c2a0e</a>
+</td>
+<td>
+IsabellaH1993
+</td>
+<td>
+2025-05-23
+</td>
+<td>
+initial push
 </td>
 </tr>
 </tbody>
@@ -762,7 +759,7 @@ seuratM$clusterName &lt;- &quot;clusterName&quot;
 seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;0&quot; )] &lt;- &quot;Fb1&quot;
 seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;1&quot; )] &lt;- &quot;PerivFb&quot;
 seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;2&quot; )] &lt;- &quot;BEC1&quot;
-seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;3&quot; )] &lt;- &quot;Mph1&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;3&quot; )] &lt;- &quot;Mph&quot;
 seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;4&quot; )] &lt;- &quot;CM&quot;
 seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;5&quot; )] &lt;- &quot;Tcell&quot;
 seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;6&quot; )] &lt;- &quot;BEC2&quot;
@@ -777,7 +774,7 @@ seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;14&quot; )] &lt;- 
 
 
 ##set color vectors 
-colclusterName &lt;- c(&quot;#67001f&quot;, &quot;#003c30&quot;,&quot;#01665e&quot;,&quot;#66C2A5&quot;,&quot;#355C7D&quot;,&quot;#202547&quot;,&quot;#8c510a&quot;, &quot;#B09C85&quot;, &quot;#628395&quot;, &quot;#4e5a4c&quot;,&quot;#3288BD&quot;, &quot;#3288CA&quot;, &quot;#725663FF&quot;,&quot;#B45B5C&quot;,&quot;#FEE08B&quot;)
+colclusterName &lt;- c(&quot;#67001f&quot;, &quot;#003c30&quot;,&quot;#01665e&quot;,&quot;#66C2A5&quot;,&quot;#355C7D&quot;,&quot;#202547&quot;,&quot;#8c510a&quot;, &quot;#B09C85&quot;, &quot;#628395&quot;, &quot;#4e5a4c&quot;,&quot;#3288BD&quot;, &quot;#3299CA&quot;, &quot;#725663FF&quot;,&quot;#B45B5C&quot;,&quot;#FEE08B&quot;)
 names(colclusterName) &lt;- c(&quot;CM&quot;, &quot;Fb1&quot;,&quot;Fb2&quot;,&quot;Fb3&quot;, &quot;PerivFb&quot;,&quot;VSMC&quot;, &quot;BEC1&quot;, &quot;BEC2&quot;, &quot;Bcell&quot;, &quot;NC&quot;, &quot;Int1&quot;, &quot;Int2&quot;, &quot;AdipoC&quot;, &quot;Mph&quot;, &quot;Tcell&quot;)
 
 coldiseaseCond &lt;- c(&quot;#dfc27d&quot;,&quot;#BE3144&quot;,&quot;#f4a582&quot;,&quot;#B45B5C&quot;,&quot;#8c510a&quot;,&quot;#202547&quot;,&quot;#355C7D&quot;,&quot;#779d8d&quot;, &quot;#3288BD&quot;, &quot;#BEAED4&quot;)
@@ -835,13 +832,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/abundance diseaseCond-1.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/abundance diseaseCond-1.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -912,13 +909,13 @@ ordpatient_diseasecond &lt;- unique(seuratM$patient_diseaseCond)[order(
   !grepl(&quot;healthy&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;HH&quot; first (FALSE is sorted before TRUE)
   !grepl(&quot;visit1&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit1&quot; second
   !grepl(&quot;visit2&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit2&quot; third
-  !grepl(&quot;visit3&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit3&quot; third
-  !grepl(&quot;visit4&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit4&quot; third
-  !grepl(&quot;visit5&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit5&quot; third
-  !grepl(&quot;visitX1&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX1&quot; third
-  !grepl(&quot;visitX2&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX2&quot; third
-   !grepl(&quot;visitX3&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX3&quot; third
-  !grepl(&quot;visitX4&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX4&quot; third
+  !grepl(&quot;visit3&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit3&quot; forth
+  !grepl(&quot;visit4&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit4&quot; fifth
+  !grepl(&quot;visit5&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit5&quot; sixth
+  !grepl(&quot;visitX1&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX1&quot; seventh
+  !grepl(&quot;visitX2&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX2&quot; eighth
+   !grepl(&quot;visitX3&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX3&quot; ninth
+  !grepl(&quot;visitX4&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX4&quot; tenth
   unique(seuratM$patient_diseaseCond)  # Alphabetical order within groups
 )]
 
@@ -950,13 +947,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/abundance patient_diseaseCond-1.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/abundance patient_diseaseCond-1.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1000,13 +997,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/abundance patient_diseaseCond-2.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/abundance patient_diseaseCond-2.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1072,13 +1069,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-1.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-1.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1131,13 +1128,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-2.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-2.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1171,13 +1168,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-3.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-3.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1211,13 +1208,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-4.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-4.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1251,13 +1248,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-5.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-5.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1291,13 +1288,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-6.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-6.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1331,13 +1328,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-7.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-7.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1371,13 +1368,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-8.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-8.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1411,13 +1408,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-9.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-9.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1451,13 +1448,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-10.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-10.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1491,13 +1488,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-11.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-11.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1531,13 +1528,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-12.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-12.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1571,13 +1568,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-13.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-13.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1611,13 +1608,93 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-14.png" target="_blank">3145157</a>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-14.png" target="_blank">12c2a0e</a>
 </td>
 <td>
-angeldemartin
+IsabellaH1993
 </td>
 <td>
-2025-02-21
+2025-05-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[14]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-15.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-15">
+Past versions of fractions-15.png
+</button>
+</p>
+<div id="fig-fractions-15" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-15.png" target="_blank">12c2a0e</a>
+</td>
+<td>
+IsabellaH1993
+</td>
+<td>
+2025-05-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[15]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-16.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-16">
+Past versions of fractions-16.png
+</button>
+</p>
+<div id="fig-fractions-16" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/IsabellaH1993/Rejection-Cohort/blob/12c2a0e0102ad42c1cee93af61d40b1370984855/docs/figure/RelativeAbundances.Rmd/fractions-16.png" target="_blank">12c2a0e</a>
+</td>
+<td>
+IsabellaH1993
+</td>
+<td>
+2025-05-23
 </td>
 </tr>
 </tbody>
@@ -1637,56 +1714,56 @@ show(sub_Tcells)</code></pre>
 8    CarTransPat18_visit1_Tcell    1
 20   CarTransPat18_visit2_Tcell  196
 30   CarTransPat18_visit3_Tcell    5
-42   CarTransPat18_visit4_Tcell   34
-52  CarTransPat18_visitX1_Tcell   32
-61  CarTransPat18_visitX2_Tcell   10
-72   CarTransPat19_visit1_Tcell  248
-84   CarTransPat19_visit2_Tcell  272
-96   CarTransPat19_visit3_Tcell  155
-108 CarTransPat19_visitX1_Tcell  133
-122  CarTransPat2_visitX2_Tcell   46
-135  CarTransPat2_visitX3_Tcell  289
-148   CarTransPat4_visit1_Tcell  336
-161   CarTransPat4_visit2_Tcell   92
-174   CarTransPat4_visit3_Tcell   59
-187   CarTransPat4_visit4_Tcell 1242
-196   CarTransPat4_visit5_Tcell   16
-208  CarTransPat4_visitX1_Tcell  464
-220  CarTransPat4_visitX2_Tcell   98
-233   CarTransPat6_visit1_Tcell   19
-247   CarTransPat6_visit2_Tcell   13
-259   CarTransPat6_visit3_Tcell    8
-269   CarTransPat6_visit4_Tcell    8
-278   CarTransPat6_visit5_Tcell   31
-291  CarTransPat6_visitX1_Tcell   48
-303  CarTransPat6_visitX2_Tcell  171
-313  CarTransPat6_visitX3_Tcell   10
-326   CarTransPat7_visit1_Tcell   17
-339   CarTransPat7_visit2_Tcell  219
-351   CarTransPat7_visit3_Tcell    8
-361   CarTransPat7_visit4_Tcell  102
-370   CarTransPat7_visit5_Tcell   16
-383  CarTransPat7_visitX1_Tcell  144
-394  CarTransPat7_visitX2_Tcell  617
-404  CarTransPat7_visitX3_Tcell   52
-416  CarTransPat7_visitX4_Tcell  152
-425  CarTransPat8_visitX2_Tcell   10
-439  CarTransPat8_visitX3_Tcell   24
-453           HH1_healthy_Tcell   65
-465          HH10_healthy_Tcell   12
-479           HH2_healthy_Tcell   37
-493           HH3_healthy_Tcell  104
-506           HH4_healthy_Tcell  114
-519           HH5_healthy_Tcell   29
-533           HH6_healthy_Tcell  108
-547           HH7_healthy_Tcell   94
-559           HH8_healthy_Tcell   14
-572           HH9_healthy_Tcell   30</code></pre>
+43   CarTransPat18_visit4_Tcell   34
+53  CarTransPat18_visitX1_Tcell   32
+62  CarTransPat18_visitX2_Tcell   10
+74   CarTransPat19_visit1_Tcell  248
+86   CarTransPat19_visit2_Tcell  272
+98   CarTransPat19_visit3_Tcell  155
+110 CarTransPat19_visitX1_Tcell  133
+125  CarTransPat2_visitX2_Tcell   46
+139  CarTransPat2_visitX3_Tcell  289
+152   CarTransPat4_visit1_Tcell  336
+166   CarTransPat4_visit2_Tcell   92
+179   CarTransPat4_visit3_Tcell   59
+193   CarTransPat4_visit4_Tcell 1242
+202   CarTransPat4_visit5_Tcell   16
+215  CarTransPat4_visitX1_Tcell  464
+227  CarTransPat4_visitX2_Tcell   98
+240   CarTransPat6_visit1_Tcell   19
+254   CarTransPat6_visit2_Tcell   13
+267   CarTransPat6_visit3_Tcell    8
+277   CarTransPat6_visit4_Tcell    8
+286   CarTransPat6_visit5_Tcell   31
+300  CarTransPat6_visitX1_Tcell   48
+312  CarTransPat6_visitX2_Tcell  171
+323  CarTransPat6_visitX3_Tcell   10
+337   CarTransPat7_visit1_Tcell   17
+351   CarTransPat7_visit2_Tcell  219
+364   CarTransPat7_visit3_Tcell    8
+374   CarTransPat7_visit4_Tcell  102
+383   CarTransPat7_visit5_Tcell   16
+396  CarTransPat7_visitX1_Tcell  144
+407  CarTransPat7_visitX2_Tcell  617
+417  CarTransPat7_visitX3_Tcell   52
+429  CarTransPat7_visitX4_Tcell  152
+438  CarTransPat8_visitX2_Tcell   10
+453  CarTransPat8_visitX3_Tcell   24
+468           HH1_healthy_Tcell   65
+481          HH10_healthy_Tcell   12
+496           HH2_healthy_Tcell   37
+511           HH3_healthy_Tcell  104
+525           HH4_healthy_Tcell  114
+539           HH5_healthy_Tcell   29
+554           HH6_healthy_Tcell  108
+569           HH7_healthy_Tcell   94
+582           HH8_healthy_Tcell   14
+596           HH9_healthy_Tcell   30</code></pre>
 </div>
 <div id="session-info" class="section level2">
 <h2>session info</h2>
 <pre class="r"><code>date()</code></pre>
-<pre><code>[1] &quot;Thu May 22 09:47:25 2025&quot;</code></pre>
+<pre><code>[1] &quot;Fri May 23 14:19:58 2025&quot;</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>R version 4.4.2 (2024-10-31)
 Platform: aarch64-apple-darwin20
