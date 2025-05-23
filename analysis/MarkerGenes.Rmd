@@ -305,6 +305,10 @@ genesPlot <- data.frame(gene=c("TTN", "MYBPC3", "RYR2", "NEBL", "TNNT2", "CMYA5"
 levels(seurat)
 colVec <- colclusterName
 avgHeatmap(seurat, selGenes = genesPlot, colVecIdent = colVec)
+
+pdf(file.path(output_path,"Heatmap_0.25.pdf"), height = 20, width = 8)
+avgHeatmap(seurat, selGenes = genesPlot, colVecIdent = colVec)
+dev.off()
 ```
 
 

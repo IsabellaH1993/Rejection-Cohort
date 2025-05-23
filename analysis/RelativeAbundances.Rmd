@@ -171,13 +171,13 @@ ordpatient_diseasecond <- unique(seuratM$patient_diseaseCond)[order(
   !grepl("healthy", unique(seuratM$patient_diseaseCond)),  # "HH" first (FALSE is sorted before TRUE)
   !grepl("visit1", unique(seuratM$patient_diseaseCond)),  # "visit1" second
   !grepl("visit2", unique(seuratM$patient_diseaseCond)),  # "visit2" third
-  !grepl("visit3", unique(seuratM$patient_diseaseCond)),  # "visit3" third
-  !grepl("visit4", unique(seuratM$patient_diseaseCond)),  # "visit4" third
-  !grepl("visit5", unique(seuratM$patient_diseaseCond)),  # "visit5" third
-  !grepl("visitX1", unique(seuratM$patient_diseaseCond)),  # "visitX1" third
-  !grepl("visitX2", unique(seuratM$patient_diseaseCond)),  # "visitX2" third
-   !grepl("visitX3", unique(seuratM$patient_diseaseCond)),  # "visitX3" third
-  !grepl("visitX4", unique(seuratM$patient_diseaseCond)),  # "visitX4" third
+  !grepl("visit3", unique(seuratM$patient_diseaseCond)),  # "visit3" forth
+  !grepl("visit4", unique(seuratM$patient_diseaseCond)),  # "visit4" fifth
+  !grepl("visit5", unique(seuratM$patient_diseaseCond)),  # "visit5" sixth
+  !grepl("visitX1", unique(seuratM$patient_diseaseCond)),  # "visitX1" seventh
+  !grepl("visitX2", unique(seuratM$patient_diseaseCond)),  # "visitX2" eighth
+   !grepl("visitX3", unique(seuratM$patient_diseaseCond)),  # "visitX3" ninth
+  !grepl("visitX4", unique(seuratM$patient_diseaseCond)),  # "visitX4" tenth
   unique(seuratM$patient_diseaseCond)  # Alphabetical order within groups
 )]
 

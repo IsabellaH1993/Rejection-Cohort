@@ -2,3 +2,4 @@
 *.xlsx
 *.rds
 /Old Analysis
+.DS_Store
