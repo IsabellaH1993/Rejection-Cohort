@@ -1,0 +1,102 @@
+---
+title: "CarTransLateRej - Merging"
+author: "I. Hanka"
+date: "2025-05-23"
+output: 
+  html_document:
+    keep_md: true
+    toc: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+options(width = 100)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, dev = c("png", "pdf"))
+seed <- 1234
+```
+
+## load packages
+```{r load packages, warning=FALSE, include=FALSE}
+#library(ExploreSCdataSeurat3)
+#library(runSeurat3)
+library(Seurat)
+library(ggpubr)
+library(pheatmap)
+library(SingleCellExperiment)
+library(dplyr)
+library(tidyverse)
+library(viridis)
+library(muscat)
+library(circlize)
+library(destiny)
+library(scater)
+library(metap)
+library(multtest)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+library(msigdbr)
+library(enrichplot)
+library(DOSE)
+library(grid)
+library(gridExtra)
+library(ggupset)
+library(VennDiagram)
+library(NCmisc)
+library(future)
+library(workflowr)
+```
+
+##############################Pre-processing##############################
+```{r}
+#MaxVSize manuell festlegen
+options(future.globals.maxSize=15000*1024^2)
+#options("maxVSize"=)
+mem.maxVSize()
+```
+
+## load files and merge
+```{r load files, eval=FALSE, include=TRUE}
+### load and merge all 
+basedir <- "/Users/immbio/Desktop/CarTransLateRej/data/seurat_files/"
+fileNamList <- list.files(path = basedir)
+
+for(i in 1:length(fileNamList)){
+  seuratS <- readRDS(paste0(basedir, fileNamList[i]))
+  seuratS@assays$RNA@layers$scale.data <- NULL
+  if(exists("seuratM")){
+    seuratM <- merge(x = seuratM, y = seuratS)
+    cat("Merged", i, "of", length(fileNamList), "files - Total cells:", ncol(seuratM), "\n")
+  }else{
+    seuratM <- seuratS
+    cat("Initialized with first Seurat object:", fileNamList[i], "\n")
+  }
+}
+ 
+remove(seuratS)
+table(seuratM$dataset)
+table(seuratM$orig.ident)
+
+#join layers
+seuratM <- JoinLayers(seuratM)
+
+#rerun seurat
+seuratM <- NormalizeData (object = seuratM)
+seuratM <- FindVariableFeatures(object = seuratM)
+seuratM <- ScaleData(object = seuratM, verbose = TRUE)
+seuratM <- RunPCA(object=seuratM, npcs = 30, verbose = FALSE)
+ElbowPlot(seuratM) #Ranks PC based on the percentage of variance explained by each one. At flattening curve, the majority of true signal is captured by this number of PCs. Including too many PCs usually does not affect much the result, while including too few PCs can affect the results very much
+seuratM <- RunTSNE(object=seuratM, reduction="pca", dims = 1:20)
+seuratM <- RunUMAP(object=seuratM, reduction="pca", dims = 1:20)
+seuratM <- FindNeighbors(object = seuratM, reduction = "pca", dims= 1:20)
+
+
+res <- c(0.25, 0.6, 0.8, 0.4) #If other resolutions are warranted this needs to be changed
+for (i in 1:length(res)) {
+  seuratM <- FindClusters(object = seuratM, resolution = res[i], random.seed = 1234)
+}
+```
+
+```{r save merged seurat object, eval=FALSE, include=TRUE}
+### save seurat object
+saveRDS(seuratM, file="/Users/immbio/Desktop/CarTransLateRej/data/CarTransLateRej_allmerged_seurat.rds")
