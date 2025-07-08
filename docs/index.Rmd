@@ -1,5 +1,6 @@
 ---
-title: "CarTransLateRej"
+---
+title: "Rejection-Cohort"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -9,22 +10,21 @@ editor_options:
 ---
 
 ## Merging
-Merge
+Merging
 [link](Merging.html)
 
-##QC-UMAPS
+## QC-UMAPS
 QC and UMAP
 [link](QC-UMAPS.html)
 
 ## MarkerGenes
-Marker genes
+MarkerGenes
 [link](MarkerGenes.html)
 
 ## RelativeAbundances
-Relative abundances
+RelativeAbundances
 [link](RelativeAbundances.html)
 
-##Clinical Phenotypes
-Clinical Phenotypes
+## Clinical Phenotypes
+ClinicalPhenotypes
 [link](Clinical-Phenotypes.html)
-
