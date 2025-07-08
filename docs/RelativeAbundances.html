@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="I. Hanka" />
+
+<meta name="date" content="2025-05-23" />
+
+<title>CarTransLateRej - RelativeAbundances</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CarTransLateRej</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">CarTransLateRej - RelativeAbundances</h1>
+<h4 class="author">I. Hanka</h4>
+<h4 class="date">2025-05-23</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2025-07-08
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 2
+</p>
+<p>
+<strong>Knit directory:</strong> <code>CarTransLateRej/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20250218code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20250218)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20250218code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20250218)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongabsolute">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>File paths:</strong> absolute </a>
+</p>
+</div>
+<div id="strongFilepathsstrongabsolute" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Using absolute paths to the files within your workflowr project makes it
+difficult for you and others to run your code on a different machine.
+Change the absolute path(s) below to the suggested relative path(s) to
+make your code more reproducible.
+</p>
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th style="text-align:left;">
+absolute
+</th>
+<th style="text-align:left;">
+relative
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+/Users/immbio/Desktop/CarTransLateRej/data/CarTransLateRej_allmerged_seurat.rds
+</td>
+<td style="text-align:left;">
+data/CarTransLateRej_allmerged_seurat.rds
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomangeldemartinCarTransLateRejtree31451570f3fc44a2edd9160b0601d3010ee9f54ftargetblank3145157a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/angeldemartin/CarTransLateRej/tree/31451570f3fc44a2edd9160b0601d3010ee9f54f" target="_blank">3145157</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomangeldemartinCarTransLateRejtree31451570f3fc44a2edd9160b0601d3010ee9f54ftargetblank3145157a"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/angeldemartin/CarTransLateRej/tree/31451570f3fc44a2edd9160b0601d3010ee9f54f" target="_blank">3145157</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/.DS_Store
+    Ignored:    analysis/.RData
+    Ignored:    analysis/.Rhistory
+    Ignored:    data/
+
+Untracked files:
+    Untracked:  Old Analysis/
+    Untracked:  analysis/Clinical Phenotypes.Rmd
+    Untracked:  analysis/Dotplot_0.25.pdf
+    Untracked:  analysis/Dotplot_clusternames.pdf
+    Untracked:  analysis/Heatmap_0.25.pdf
+    Untracked:  analysis/Heatmap_ACR.pdf
+    Untracked:  analysis/Merging.Rmd
+    Untracked:  analysis/QC-UMAPS.Rmd
+    Untracked:  analysis/markerGenesclusterName
+    Untracked:  analysis/markerGenesclusterName_0.25
+    Untracked:  analysis/markerGenesclusterName_0.25.txt
+    Untracked:  analysis/markerGenesclusterName_0.25.xlsx
+
+Unstaged changes:
+    Modified:   .Rprofile
+    Modified:   .gitattributes
+    Modified:   .gitignore
+    Modified:   CarTransLateRej.Rproj
+    Modified:   README.md
+    Modified:   _workflowr.yml
+    Modified:   analysis/MarkerGenes.Rmd
+    Deleted:    analysis/Merge-QC-UMAPS.Rmd
+    Modified:   analysis/RelativeAbundances.Rmd
+    Modified:   analysis/_site.yml
+    Modified:   analysis/about.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/license.Rmd
+    Modified:   code/README.md
+    Modified:   output/README.md
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/RelativeAbundances.Rmd</code>)
+and HTML (<code>docs/RelativeAbundances.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/analysis/RelativeAbundances.Rmd" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+<td>
+Feb25-2
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/angeldemartin/CarTransLateRej/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/RelativeAbundances.html" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+<td>
+Feb25-2
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/7af6134bf73537f67f20d1a130a317f84ab87a8d/analysis/RelativeAbundances.Rmd" target="_blank">7af6134</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+<td>
+Feb25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="load-packages" class="section level2">
+<h2>load packages</h2>
+</div>
+<div id="load-file" class="section level2">
+<h2>load file</h2>
+<pre class="r"><code>##load merged file 
+fileNam &lt;- &quot;/Users/immbio/Desktop/CarTransLateRej/data/CarTransLateRej_allmerged_seurat.rds&quot;
+seuratM &lt;- readRDS(fileNam)</code></pre>
+<p>##set color vectors</p>
+<pre class="r"><code>### patient
+HH_1 &lt;- c(&quot;o28576_1_08-8_20220525_Hu_nucseq_Graz_8_HH_GEM&quot;)
+HH_3 &lt;- c(&quot;o28576_1_10-10_20220525_Hu_nucseq_Graz_10_HH_GEM&quot;)
+HH_4 &lt;- c(&quot;o28576_1_11-11_20220525_Hu_nucseq_Graz_11_HH_GEM&quot;)
+HH_5 &lt;- c(&quot;o28576_1_12-12_20220525_Hu_nucseq_Graz_12_HH_GEM&quot;)
+HH_6 &lt;- c(&quot;o292731_1-1_20220818_Hu_nucseq_Graz_9_HH_GEM&quot;)
+HH_7 &lt;- c(&quot;o292731_2-2_20220818_Hu_nucseq_Graz_13_HH_GEM&quot;)
+HH_8 &lt;- c(&quot;o294781_01-1_20220912_Hu_nucseq_Graz_21_HH_GEM&quot;)
+HH_9 &lt;- c(&quot;o294781_02-2_20220912_Hu_nucseq_Graz_22_HH_GEM&quot;)
+HH_10 &lt;- c(&quot;o294781_03-3_20220912_Hu_nucseq_Graz_23_HH_GEM&quot;)
+HH_11 &lt;- c(&quot;o294781_04-4_20220912_Hu_nucseq_Graz_24_HH_GEM&quot;)
+
+seuratM$patient &lt;- &quot;pat_nr&quot;
+seuratM$patient[grepl(&quot;HTx002|EMB002&quot;, seuratM$dataset)] &lt;- &quot;CarTransPat2&quot;
+seuratM$patient[grepl(&quot;HTx004|EMB004&quot;, seuratM$dataset)] &lt;- &quot;CarTransPat4&quot;
+seuratM$patient[grepl(&quot;HTx006|EMB006&quot;, seuratM$dataset)] &lt;- &quot;CarTransPat6&quot;
+seuratM$patient[grepl(&quot;HTx007|EMB007&quot;, seuratM$dataset)] &lt;- &quot;CarTransPat7&quot;
+seuratM$patient[grepl(&quot;HTx008|EMB008&quot;, seuratM$dataset)] &lt;- &quot;CarTransPat8&quot;
+seuratM$patient[grepl(&quot;HTx018|EMB0018&quot;, seuratM$dataset)] &lt;- &quot;CarTransPat18&quot;
+seuratM$patient[grepl(&quot;HTx019|EMB0019&quot;, seuratM$dataset)] &lt;- &quot;CarTransPat19&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_1)] &lt;- &quot;HH1&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_3)] &lt;- &quot;HH3&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_4)] &lt;- &quot;HH4&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_5)] &lt;- &quot;HH5&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_6)] &lt;- &quot;HH6&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_7)] &lt;- &quot;HH7&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_8)] &lt;- &quot;HH8&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_9)] &lt;- &quot;HH9&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_10)] &lt;- &quot;HH10&quot;
+seuratM$patient[which(seuratM$dataset %in% HH_11)] &lt;- &quot;HH2&quot;
+table(seuratM$patient)</code></pre>
+<pre><code>
+CarTransPat18 CarTransPat19  CarTransPat2  CarTransPat4  CarTransPat6  CarTransPat7  CarTransPat8 
+         1206          2493          1379          9000          2817          6486           606 
+          HH1          HH10           HH2           HH3           HH4           HH5           HH6 
+         4005           866          2181          3922          4265          3853          6434 
+          HH7           HH8           HH9 
+        11568          1465          2064 </code></pre>
+<pre class="r"><code>ordpatients &lt;- c(&quot;HH1&quot;, &quot;HH2&quot;, &quot;HH3&quot;, &quot;HH4&quot;, &quot;HH5&quot;, &quot;HH6&quot;, &quot;HH7&quot;, &quot;HH8&quot;, &quot;HH9&quot;, &quot;HH10&quot;,&quot;CarTransPat2&quot;, &quot;CarTransPat4&quot;, &quot;CarTransPat6&quot;, &quot;CarTransPat7&quot;, &quot;CarTransPat8&quot;, &quot;CarTransPat18&quot;, &quot;CarTransPat19&quot;)
+
+seuratM$clusterName &lt;- &quot;clusterName&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;0&quot; )] &lt;- &quot;Fb1&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;1&quot; )] &lt;- &quot;PerivFb&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;2&quot; )] &lt;- &quot;BEC1&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;3&quot; )] &lt;- &quot;Mph&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;4&quot; )] &lt;- &quot;CM&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;5&quot; )] &lt;- &quot;Tcell&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;6&quot; )] &lt;- &quot;BEC2&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;7&quot; )] &lt;- &quot;VSMC&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;8&quot; )] &lt;- &quot;Bcell&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;9&quot; )] &lt;- &quot;NC&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;10&quot; )] &lt;- &quot;Int1&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;11&quot; )] &lt;- &quot;Fb2&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;12&quot; )] &lt;- &quot;Int2&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;13&quot; )] &lt;- &quot;Fb3&quot;
+seuratM$clusterName[which(seuratM$RNA_snn_res.0.25 %in% &quot;14&quot; )] &lt;- &quot;AdipoC&quot;
+
+
+##set color vectors 
+colclusterName &lt;- c(&quot;#67001f&quot;, &quot;#003c30&quot;,&quot;#01665e&quot;,&quot;#66C2A5&quot;,&quot;#355C7D&quot;,&quot;#202547&quot;,&quot;#8c510a&quot;, &quot;#B09C85&quot;, &quot;#628395&quot;, &quot;#4e5a4c&quot;,&quot;pink&quot;, &quot;#3299CA&quot;, &quot;#725663FF&quot;,&quot;#B45B5C&quot;,&quot;#FEE08B&quot;)
+names(colclusterName) &lt;- c(&quot;CM&quot;, &quot;Fb1&quot;,&quot;Fb2&quot;,&quot;Fb3&quot;, &quot;PerivFb&quot;,&quot;VSMC&quot;, &quot;BEC1&quot;, &quot;BEC2&quot;, &quot;Bcell&quot;, &quot;NC&quot;, &quot;Int1&quot;, &quot;Int2&quot;, &quot;AdipoC&quot;, &quot;Mph&quot;, &quot;Tcell&quot;)
+
+coldiseaseCond &lt;- c(&quot;#dfc27d&quot;,&quot;#BE3144&quot;,&quot;#f4a582&quot;,&quot;#B45B5C&quot;,&quot;#8c510a&quot;,&quot;#202547&quot;,&quot;#355C7D&quot;,&quot;#779d8d&quot;, &quot;#3288BD&quot;, &quot;#BEAED4&quot;)
+names(coldiseaseCond) &lt;- c(&quot;healthy&quot;, &quot;visit1&quot;, &quot;visit2&quot; ,&quot;visit3&quot;, &quot;visit4&quot;, &quot;visit5&quot;, &quot;visitX1&quot;, &quot;visitX2&quot;, &quot;visitX3&quot;, &quot;visitX4&quot;)</code></pre>
+</div>
+<div id="order-datasets" class="section level2">
+<h2>order datasets</h2>
+<pre class="r"><code>###diseaseCond
+datList &lt;- NULL
+for(con in unique(seuratM$diseaseCond)){
+  seuratSub &lt;- subset(seuratM, diseaseCond==con)
+  print(dim(seuratSub))
+  dat_con &lt;- as.data.frame(table(seuratSub$clusterName)) %&gt;%
+  mutate(percent=Freq/ncol(seuratSub)) %&gt;% mutate(diseaseCond=con)
+  datList[[con]] &lt;- dat_con
+}</code></pre>
+<pre><code>[1] 42834  4471
+[1] 42834  4628
+[1] 42834  2032
+[1] 42834  2423
+[1] 42834  2784
+[1] 42834  5208
+[1] 42834   512
+[1] 42834  1527
+[1] 42834   402
+[1] 42834 40623</code></pre>
+<pre class="r"><code>dat_all &lt;- do.call(&quot;rbind&quot;, datList)
+
+orddiseaseCond &lt;- c(&quot;healthy&quot;, &quot;visit1&quot;, &quot;visit2&quot; ,&quot;visit3&quot;, &quot;visit4&quot;, &quot;visit5&quot;, &quot;visitX1&quot;, &quot;visitX2&quot;, &quot;visitX3&quot;, &quot;visitX4&quot;)
+
+## plot abundance
+ggbarplot(dat_all, x= &quot;diseaseCond&quot;, y= &quot;percent&quot;, fill = &quot;Var1&quot;, legend = &quot;right&quot;,  palette = colclusterName, legend.titel = &quot;cluster&quot;, ylab = &quot;frequency&quot;)  + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + scale_x_discrete(limits=orddiseaseCond)</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/abundance%20diseaseCond-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-no-spaces-abundance-diseaseCond-1">
+Past versions of "abundance diseaseCond-1.png"
+</button>
+</p>
+<div id="fig-no-spaces-abundance-diseaseCond-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/abundance diseaseCond-1.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>###patient_diseaseCond
+seuratM$patient_diseaseCond &lt;- paste0(seuratM$patient, &#39;_&#39;, seuratM$diseaseCond)
+datList &lt;- NULL
+for(con in unique(seuratM$patient_diseaseCond)){
+  seuratSub &lt;- subset(seuratM, patient_diseaseCond==con)
+  print(dim(seuratSub))
+  dat_con &lt;- as.data.frame(table(seuratSub$clusterName)) %&gt;%
+  mutate(percent=Freq/ncol(seuratSub)) %&gt;% mutate(patient_diseaseCond=con)
+  datList[[con]] &lt;- dat_con
+}</code></pre>
+<pre><code>[1] 42834   493
+[1] 42834  1524
+[1] 42834  1688
+[1] 42834  1838
+[1] 42834   857
+[1] 42834   258
+[1] 42834   403
+[1] 42834   638
+[1] 42834   863
+[1] 42834  1044
+[1] 42834   453
+[1] 42834   431
+[1] 42834   432
+[1] 42834  1166
+[1] 42834   104
+[1] 42834   321
+[1] 42834   114
+[1] 42834   340
+[1] 42834   366
+[1] 42834    62
+[1] 42834    60
+[1] 42834   382
+[1] 42834    42
+[1] 42834   430
+[1] 42834   199
+[1] 42834  4026
+[1] 42834   294
+[1] 42834   706
+[1] 42834   907
+[1] 42834   472
+[1] 42834   408
+[1] 42834   642
+[1] 42834   737
+[1] 42834   186
+[1] 42834   402
+[1] 42834    64
+[1] 42834   542
+[1] 42834    93
+[1] 42834  4005
+[1] 42834  3922
+[1] 42834  4265
+[1] 42834  3853
+[1] 42834  6434
+[1] 42834 11568
+[1] 42834  1465
+[1] 42834  2064
+[1] 42834   866
+[1] 42834  2181</code></pre>
+<pre class="r"><code>dat_all &lt;- do.call(&quot;rbind&quot;, datList)
+
+ordpatient_diseasecond &lt;- unique(seuratM$patient_diseaseCond)[order(
+  !grepl(&quot;healthy&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;HH&quot; first (FALSE is sorted before TRUE)
+  !grepl(&quot;visit1&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit1&quot; second
+  !grepl(&quot;visit2&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit2&quot; third
+  !grepl(&quot;visit3&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit3&quot; forth
+  !grepl(&quot;visit4&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit4&quot; fifth
+  !grepl(&quot;visit5&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visit5&quot; sixth
+  !grepl(&quot;visitX1&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX1&quot; seventh
+  !grepl(&quot;visitX2&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX2&quot; eighth
+   !grepl(&quot;visitX3&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX3&quot; ninth
+  !grepl(&quot;visitX4&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;visitX4&quot; tenth
+  unique(seuratM$patient_diseaseCond)  # Alphabetical order within groups
+)]
+
+## plot abundance
+ggbarplot(dat_all, x= &quot;patient_diseaseCond&quot;, y= &quot;percent&quot;, fill = &quot;Var1&quot;, palette = colclusterName, legend = &quot;right&quot;, legend.titel = &quot;cluster&quot;, ylab = &quot;frequency&quot;)  + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + scale_x_discrete(limits=ordpatient_diseasecond)</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/abundance%20patient_diseaseCond-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-no-spaces-abundance-patient_diseaseCond-1">
+Past versions of "abundance patient_diseaseCond-1.png"
+</button>
+</p>
+<div id="fig-no-spaces-abundance-patient_diseaseCond-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/abundance patient_diseaseCond-1.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>ordpatient_diseasecond &lt;- unique(seuratM$patient_diseaseCond)[order(
+  !grepl(&quot;healthy&quot;, unique(seuratM$patient_diseaseCond)),  # &quot;HH&quot; first (FALSE is sorted before TRUE)
+  !grepl(&quot;CarTransPat4&quot;, unique(seuratM$patient_diseaseCond)),  # CarTransPat4 second
+  !grepl(&quot;CarTransPat6&quot;, unique(seuratM$patient_diseaseCond)),
+  !grepl(&quot;CarTransPat7&quot;, unique(seuratM$patient_diseaseCond)),
+  !grepl(&quot;CarTransPat18&quot;, unique(seuratM$patient_diseaseCond)),  
+  unique(seuratM$patient_diseaseCond)  # Alphabetical order within groups
+)]
+
+## plot abundance
+ggbarplot(dat_all, x= &quot;patient_diseaseCond&quot;, y= &quot;percent&quot;, fill = &quot;Var1&quot;, palette = colclusterName, legend = &quot;right&quot;, legend.titel = &quot;cluster&quot;, ylab = &quot;frequency&quot;)  + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + scale_x_discrete(limits=ordpatient_diseasecond)</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/abundance%20patient_diseaseCond-2.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-no-spaces-abundance-patient_diseaseCond-2">
+Past versions of "abundance patient_diseaseCond-2.png"
+</button>
+</p>
+<div id="fig-no-spaces-abundance-patient_diseaseCond-2"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/abundance patient_diseaseCond-2.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="fractions-according-to-patientsdisease-cond"
+class="section level2">
+<h2>fractions according to patients&amp;disease cond</h2>
+<pre class="r"><code>##set order
+seuratM$diseaseCond &lt;- factor(seuratM$diseaseCond, levels= c(&quot;healthy&quot;, &quot;visit1&quot;, &quot;visit2&quot; ,&quot;visit3&quot;, &quot;visit4&quot;, &quot;visit5&quot;, &quot;visitX1&quot;, &quot;visitX2&quot;, &quot;visitX3&quot;, &quot;visitX4&quot;))
+
+## 1. create data.frame with cluster counts per patient
+## change &quot;RNA_snn_res.0.25&quot; to subset/cluster you&#39;re interested in ...
+datFrac &lt;- data.frame(table(seuratM$patient_diseaseCond, seuratM$clusterName))
+colnames(datFrac) &lt;- c(&quot;patient_diseaseCond&quot;, &quot;subset&quot;, &quot;cnt&quot;)
+
+## 2. get total counts per patient to compute relative abundances from
+## I added cond here as grouping variable for the plotting later ...
+datSumPat &lt;- data.frame(table(seuratM$patient_diseaseCond, seuratM$diseaseCond)) %&gt;% 
+  filter(Freq &gt;0)
+colnames(datSumPat) &lt;- c(&quot;patient_diseaseCond&quot;, &quot;diseaseCond&quot;, &quot;cntPatTot&quot;)
+
+## 3. join data.frames to compute rel abundances per patient
+datFracSum &lt;- datFrac %&gt;% left_join(., datSumPat, by = &quot;patient_diseaseCond&quot;) %&gt;% 
+  mutate(relCnt = cnt/cntPatTot)
+
+## plot barplot with abundances for each subset grouped by cond
+ggbarplot(datFracSum, x = &quot;subset&quot;, y = &quot;relCnt&quot;,
+          fill = &quot;diseaseCond&quot;, color = &quot;diseaseCond&quot;,
+          palette = coldiseaseCond,
+          add = c(&quot;mean_se&quot;, &quot;dotplot&quot;),
+          add.params = list(color=&quot;black&quot;, fill=&quot;diseaseCond&quot;, size=0.2),
+          position = position_dodge(0.9),
+          xlab = &quot;subset&quot;,
+          ylab = &quot;relative abundance&quot;,
+          legend = &quot;right&quot;,
+          legend.title = &quot;&quot;) +
+  rotate_x_text(angle = 90) </code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-1">
+Past versions of fractions-1.png
+</button>
+</p>
+<div id="fig-fractions-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-1.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>## plot barplot with abundances for individual subsets
+Idents(seuratM) &lt;- seuratM$clusterName
+clusterVec &lt;- levels(seuratM)
+createClusterPlot &lt;- function(cluster) {
+  datFracSumC &lt;- datFracSum %&gt;% filter(subset == cluster)
+
+  ggbarplot(datFracSumC, x = &quot;diseaseCond&quot;, y = &quot;relCnt&quot;,
+            fill = &quot;diseaseCond&quot;, color = &quot;diseaseCond&quot;,
+            palette = coldiseaseCond,
+            add = c(&quot;mean_se&quot;, &quot;dotplot&quot;),
+            size = 5,
+            add.params = list(color = &quot;black&quot;, fill = &quot;diseaseCond&quot;),
+            position = position_dodge(0.9),
+            xlab = cluster,
+            ylab = &quot;relative abundance&quot;,
+            legend = &quot;right&quot;,
+            legend.title = &quot;&quot;) +
+    stat_compare_means(method = &quot;kruskal.test&quot;, label.y = 0.0)
+}
+lapply(clusterVec, createClusterPlot)</code></pre>
+<pre><code>[[1]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-2.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-2">
+Past versions of fractions-2.png
+</button>
+</p>
+<div id="fig-fractions-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-2.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[2]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-3.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-3">
+Past versions of fractions-3.png
+</button>
+</p>
+<div id="fig-fractions-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-3.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[3]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-4.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-4">
+Past versions of fractions-4.png
+</button>
+</p>
+<div id="fig-fractions-4" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-4.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[4]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-5.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-5">
+Past versions of fractions-5.png
+</button>
+</p>
+<div id="fig-fractions-5" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-5.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[5]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-6.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-6">
+Past versions of fractions-6.png
+</button>
+</p>
+<div id="fig-fractions-6" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-6.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[6]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-7.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-7">
+Past versions of fractions-7.png
+</button>
+</p>
+<div id="fig-fractions-7" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-7.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[7]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-8.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-8">
+Past versions of fractions-8.png
+</button>
+</p>
+<div id="fig-fractions-8" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-8.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[8]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-9.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-9">
+Past versions of fractions-9.png
+</button>
+</p>
+<div id="fig-fractions-9" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-9.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[9]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-10.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-10">
+Past versions of fractions-10.png
+</button>
+</p>
+<div id="fig-fractions-10" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-10.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[10]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-11.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-11">
+Past versions of fractions-11.png
+</button>
+</p>
+<div id="fig-fractions-11" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-11.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[11]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-12.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-12">
+Past versions of fractions-12.png
+</button>
+</p>
+<div id="fig-fractions-12" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-12.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[12]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-13.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-13">
+Past versions of fractions-13.png
+</button>
+</p>
+<div id="fig-fractions-13" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-13.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[13]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-14.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-14">
+Past versions of fractions-14.png
+</button>
+</p>
+<div id="fig-fractions-14" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-14.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[14]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-15.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-15">
+Past versions of fractions-15.png
+</button>
+</p>
+<div id="fig-fractions-15" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-15.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>
+[[15]]</code></pre>
+<p><img src="figure/RelativeAbundances.Rmd/fractions-16.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fractions-16">
+Past versions of fractions-16.png
+</button>
+</p>
+<div id="fig-fractions-16" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/angeldemartin/CarTransLateRej/blob/31451570f3fc44a2edd9160b0601d3010ee9f54f/docs/figure/RelativeAbundances.Rmd/fractions-16.png" target="_blank">3145157</a>
+</td>
+<td>
+angeldemartin
+</td>
+<td>
+2025-02-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>#Show total counts
+
+seuratM$patient_diseaseCond_cluster &lt;- paste0(seuratM$patient, &#39;_&#39;, seuratM$diseaseCond, &#39;_&#39;, seuratM$clusterName)
+TableClusterPatientDis &lt;- table(seuratM$patient_diseaseCond_cluster)
+#View(TableClusterPatientDis)
+dfClusterPatDis &lt;- as.data.frame(TableClusterPatientDis)
+
+sub_Tcells &lt;- dfClusterPatDis[grep(&quot;_Tcell&quot;, dfClusterPatDis$Var1),]
+show(sub_Tcells)</code></pre>
+<pre><code>                           Var1 Freq
+8    CarTransPat18_visit1_Tcell    1
+20   CarTransPat18_visit2_Tcell  196
+30   CarTransPat18_visit3_Tcell    5
+43   CarTransPat18_visit4_Tcell   34
+53  CarTransPat18_visitX1_Tcell   32
+62  CarTransPat18_visitX2_Tcell   10
+74   CarTransPat19_visit1_Tcell  248
+86   CarTransPat19_visit2_Tcell  272
+98   CarTransPat19_visit3_Tcell  155
+110 CarTransPat19_visitX1_Tcell  133
+125  CarTransPat2_visitX2_Tcell   46
+139  CarTransPat2_visitX3_Tcell  289
+152   CarTransPat4_visit1_Tcell  336
+166   CarTransPat4_visit2_Tcell   92
+179   CarTransPat4_visit3_Tcell   59
+193   CarTransPat4_visit4_Tcell 1242
+202   CarTransPat4_visit5_Tcell   16
+215  CarTransPat4_visitX1_Tcell  464
+227  CarTransPat4_visitX2_Tcell   98
+240   CarTransPat6_visit1_Tcell   19
+254   CarTransPat6_visit2_Tcell   13
+267   CarTransPat6_visit3_Tcell    8
+277   CarTransPat6_visit4_Tcell    8
+286   CarTransPat6_visit5_Tcell   31
+300  CarTransPat6_visitX1_Tcell   48
+312  CarTransPat6_visitX2_Tcell  171
+323  CarTransPat6_visitX3_Tcell   10
+337   CarTransPat7_visit1_Tcell   17
+351   CarTransPat7_visit2_Tcell  219
+364   CarTransPat7_visit3_Tcell    8
+374   CarTransPat7_visit4_Tcell  102
+383   CarTransPat7_visit5_Tcell   16
+396  CarTransPat7_visitX1_Tcell  144
+407  CarTransPat7_visitX2_Tcell  617
+417  CarTransPat7_visitX3_Tcell   52
+429  CarTransPat7_visitX4_Tcell  152
+438  CarTransPat8_visitX2_Tcell   10
+453  CarTransPat8_visitX3_Tcell   24
+468           HH1_healthy_Tcell   65
+481          HH10_healthy_Tcell   12
+496           HH2_healthy_Tcell   37
+511           HH3_healthy_Tcell  104
+525           HH4_healthy_Tcell  114
+539           HH5_healthy_Tcell   29
+554           HH6_healthy_Tcell  108
+569           HH7_healthy_Tcell   94
+582           HH8_healthy_Tcell   14
+596           HH9_healthy_Tcell   30</code></pre>
+</div>
+<div id="session-info" class="section level2">
+<h2>session info</h2>
+<pre class="r"><code>date()</code></pre>
+<pre><code>[1] &quot;Tue Jul  8 21:55:07 2025&quot;</code></pre>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.2 (2024-10-31)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sequoia 15.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: Europe/Zurich
+tzcode source: internal
+
+attached base packages:
+[1] grid      stats4    stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] NCmisc_1.2.0                VennDiagram_1.7.3           futile.logger_1.4.3        
+ [4] ggupset_0.4.1               gridExtra_2.3               DOSE_4.0.0                 
+ [7] enrichplot_1.26.6           msigdbr_7.5.1               org.Hs.eg.db_3.20.0        
+[10] AnnotationDbi_1.68.0        clusterProfiler_4.14.4      multtest_2.62.0            
+[13] metap_1.11                  scater_1.34.0               scuttle_1.16.0             
+[16] destiny_3.20.0              circlize_0.4.16             muscat_1.20.0              
+[19] viridis_0.6.5               viridisLite_0.4.2           lubridate_1.9.4            
+[22] forcats_1.0.0               stringr_1.5.1               purrr_1.0.4                
+[25] readr_2.1.5                 tidyr_1.3.1                 tibble_3.2.1               
+[28] tidyverse_2.0.0             dplyr_1.1.4                 SingleCellExperiment_1.28.1
+[31] SummarizedExperiment_1.36.0 Biobase_2.66.0              GenomicRanges_1.58.0       
+[34] GenomeInfoDb_1.42.3         IRanges_2.40.1              S4Vectors_0.44.0           
+[37] BiocGenerics_0.52.0         MatrixGenerics_1.18.1       matrixStats_1.5.0          
+[40] pheatmap_1.0.12             ggpubr_0.6.0                ggplot2_3.5.1              
+[43] Seurat_5.2.1                SeuratObject_5.0.2          sp_2.2-0                   
+
+loaded via a namespace (and not attached):
+  [1] igraph_2.1.4             ica_1.0-3                plotly_4.10.4           
+  [4] Formula_1.2-5            zlibbioc_1.52.0          tidyselect_1.2.1        
+  [7] bit_4.5.0.1              doParallel_1.0.17        clue_0.3-66             
+ [10] lattice_0.22-6           rjson_0.2.23             blob_1.2.4              
+ [13] S4Arrays_1.6.0           pbkrtest_0.5.3           parallel_4.4.2          
+ [16] png_0.1-8                plotrix_3.8-4            cli_3.6.4               
+ [19] ggplotify_0.1.2          goftest_1.2-3            VIM_6.2.2               
+ [22] variancePartition_1.36.3 BiocNeighbors_2.0.1      uwot_0.2.3              
+ [25] curl_6.2.1               mime_0.12                evaluate_1.0.3          
+ [28] tidytree_0.4.6           ComplexHeatmap_2.22.0    stringi_1.8.4           
+ [31] backports_1.5.0          lmerTest_3.1-3           qqconf_1.3.2            
+ [34] httpuv_1.6.15            magrittr_2.0.3           splines_4.4.2           
+ [37] sctransform_0.4.1        ggbeeswarm_0.7.2         DBI_1.2.3               
+ [40] jquerylib_0.1.4          smoother_1.3             withr_3.0.2             
+ [43] git2r_0.36.2             corpcor_1.6.10           reformulas_0.4.0        
+ [46] class_7.3-23             rprojroot_2.0.4          lmtest_0.9-40           
+ [49] formatR_1.14             htmlwidgets_1.6.4        fs_1.6.5                
+ [52] ggrepel_0.9.6            labeling_0.4.3           fANCOVA_0.6-1           
+ [55] SparseArray_1.6.2        DESeq2_1.46.0            ranger_0.17.0           
+ [58] DEoptimR_1.1-3-1         reticulate_1.41.0        hexbin_1.28.5           
+ [61] zoo_1.8-13               XVector_0.46.0           knitr_1.49              
+ [64] ggplot.multistats_1.0.1  UCSC.utils_1.2.0         RhpcBLASctl_0.23-42     
+ [67] timechange_0.3.0         foreach_1.5.2            patchwork_1.3.0         
+ [70] caTools_1.18.3           data.table_1.17.0        ggtree_3.14.0           
+ [73] R.oo_1.27.0              RSpectra_0.16-2          irlba_2.3.5.1           
+ [76] fastDummies_1.7.5        gridGraphics_0.5-1       lazyeval_0.2.2          
+ [79] yaml_2.3.10              survival_3.8-3           scattermore_1.2         
+ [82] crayon_1.5.3             RcppAnnoy_0.0.22         RColorBrewer_1.1-3      
+ [85] progressr_0.15.1         later_1.4.1              ggridges_0.5.6          
+ [88] codetools_0.2-20         GlobalOptions_0.1.2      aod_1.3.3               
+ [91] KEGGREST_1.46.0          Rtsne_0.17               shape_1.4.6.1           
+ [94] limma_3.62.2             pkgconfig_2.0.3          TMB_1.9.16              
+ [97] spatstat.univar_3.1-1    mathjaxr_1.6-0           EnvStats_3.0.0          
+[100] aplot_0.2.5              scatterplot3d_0.3-44     spatstat.sparse_3.1-0   
+[103] ape_5.8-1                xtable_1.8-4             car_3.1-3               
+[106] plyr_1.8.9               httr_1.4.7               rbibutils_2.3           
+[109] tools_4.4.2              globals_0.16.3           beeswarm_0.4.0          
+[112] broom_1.0.7              nlme_3.1-167             lambda.r_1.2.4          
+[115] lme4_1.1-36              digest_0.6.37            numDeriv_2016.8-1.1     
+[118] Matrix_1.7-2             farver_2.1.2             tzdb_0.4.0              
+[121] remaCor_0.0.18           reshape2_1.4.4           yulab.utils_0.2.0       
+[124] glue_1.8.0               cachem_1.1.0             polyclip_1.10-7         
+[127] generics_0.1.3           Biostrings_2.74.1        mvtnorm_1.3-3           
+[130] parallelly_1.44.0        mnormt_2.1.1             statmod_1.5.0           
+[133] RcppHNSW_0.6.0           ScaledMatrix_1.14.0      carData_3.0-5           
+[136] minqa_1.2.8              pbapply_1.7-2            spam_2.11-1             
+[139] gson_0.1.0               gtools_3.9.5             ggsignif_0.6.4          
+[142] RcppEigen_0.3.4.0.2      shiny_1.10.0             GenomeInfoDbData_1.2.13 
+[145] glmmTMB_1.1.10           R.utils_2.13.0           memoise_2.0.1           
+[148] rmarkdown_2.29           scales_1.3.0             R.methodsS3_1.8.2       
+[151] future_1.40.0            RANN_2.6.2               spatstat.data_3.1-4     
+[154] rstudioapi_0.17.1        cluster_2.1.8            whisker_0.4.1           
+[157] mutoss_0.1-13            spatstat.utils_3.1-2     hms_1.1.3               
+[160] fitdistrplus_1.2-2       munsell_0.5.1            cowplot_1.1.3           
+[163] colorspace_2.1-1         rlang_1.1.5              xts_0.14.1              
+[166] dotCall64_1.2            ggtangle_0.0.6           laeken_0.5.3            
+[169] mgcv_1.9-1               xfun_0.51                e1071_1.7-16            
+[172] TH.data_1.1-3            iterators_1.0.14         abind_1.4-8             
+[175] GOSemSim_2.32.0          treeio_1.30.0            futile.options_1.0.1    
+[178] bitops_1.0-9             Rdpack_2.6.2             promises_1.3.2          
+[181] RSQLite_2.3.9            qvalue_2.38.0            sandwich_3.1-1          
+[184] fgsea_1.32.2             DelayedArray_0.32.0      proxy_0.4-27            
+[187] GO.db_3.20.0             compiler_4.4.2           prettyunits_1.2.0       
+[190] boot_1.3-31              beachmat_2.22.0          listenv_0.9.1           
+[193] Rcpp_1.0.14              edgeR_4.4.2              workflowr_1.7.1         
+[196] BiocSingular_1.22.0      tensor_1.5               MASS_7.3-64             
+[199] progress_1.2.3           BiocParallel_1.40.0      babelgene_22.9          
+[202] spatstat.random_3.3-2    R6_2.6.1                 fastmap_1.2.0           
+[205] multcomp_1.4-28          fastmatch_1.1-6          rstatix_0.7.2           
+[208] vipor_0.4.7              TTR_0.24.4               ROCR_1.0-11             
+[211] TFisher_0.2.0            rsvd_1.0.5               vcd_1.4-13              
+[214] nnet_7.3-20              gtable_0.3.6             KernSmooth_2.23-26      
+[217] miniUI_0.1.1.1           deldir_2.0-4             htmltools_0.5.8.1       
+[220] ggthemes_5.1.0           bit64_4.6.0-1            spatstat.explore_3.3-4  
+[223] lifecycle_1.0.4          blme_1.0-6               nloptr_2.1.1            
+[226] sass_0.4.9               vctrs_0.6.5              robustbase_0.99-4-1     
+[229] spatstat.geom_3.3-5      sn_2.1.1                 ggfun_0.1.8             
+[232] future.apply_1.11.3      bslib_0.9.0              pillar_1.10.1           
+[235] gplots_3.2.0             pcaMethods_1.98.0        locfit_1.5-9.11         
+[238] jsonlite_1.9.0           GetoptLong_1.0.5        </code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.2 (2024-10-31)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sequoia 15.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: Europe/Zurich
+tzcode source: internal
+
+attached base packages:
+[1] grid      stats4    stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] NCmisc_1.2.0                VennDiagram_1.7.3           futile.logger_1.4.3        
+ [4] ggupset_0.4.1               gridExtra_2.3               DOSE_4.0.0                 
+ [7] enrichplot_1.26.6           msigdbr_7.5.1               org.Hs.eg.db_3.20.0        
+[10] AnnotationDbi_1.68.0        clusterProfiler_4.14.4      multtest_2.62.0            
+[13] metap_1.11                  scater_1.34.0               scuttle_1.16.0             
+[16] destiny_3.20.0              circlize_0.4.16             muscat_1.20.0              
+[19] viridis_0.6.5               viridisLite_0.4.2           lubridate_1.9.4            
+[22] forcats_1.0.0               stringr_1.5.1               purrr_1.0.4                
+[25] readr_2.1.5                 tidyr_1.3.1                 tibble_3.2.1               
+[28] tidyverse_2.0.0             dplyr_1.1.4                 SingleCellExperiment_1.28.1
+[31] SummarizedExperiment_1.36.0 Biobase_2.66.0              GenomicRanges_1.58.0       
+[34] GenomeInfoDb_1.42.3         IRanges_2.40.1              S4Vectors_0.44.0           
+[37] BiocGenerics_0.52.0         MatrixGenerics_1.18.1       matrixStats_1.5.0          
+[40] pheatmap_1.0.12             ggpubr_0.6.0                ggplot2_3.5.1              
+[43] Seurat_5.2.1                SeuratObject_5.0.2          sp_2.2-0                   
+
+loaded via a namespace (and not attached):
+  [1] igraph_2.1.4             ica_1.0-3                plotly_4.10.4           
+  [4] Formula_1.2-5            zlibbioc_1.52.0          tidyselect_1.2.1        
+  [7] bit_4.5.0.1              doParallel_1.0.17        clue_0.3-66             
+ [10] lattice_0.22-6           rjson_0.2.23             blob_1.2.4              
+ [13] S4Arrays_1.6.0           pbkrtest_0.5.3           parallel_4.4.2          
+ [16] png_0.1-8                plotrix_3.8-4            cli_3.6.4               
+ [19] ggplotify_0.1.2          goftest_1.2-3            VIM_6.2.2               
+ [22] variancePartition_1.36.3 BiocNeighbors_2.0.1      uwot_0.2.3              
+ [25] curl_6.2.1               mime_0.12                evaluate_1.0.3          
+ [28] tidytree_0.4.6           ComplexHeatmap_2.22.0    stringi_1.8.4           
+ [31] backports_1.5.0          lmerTest_3.1-3           qqconf_1.3.2            
+ [34] httpuv_1.6.15            magrittr_2.0.3           splines_4.4.2           
+ [37] sctransform_0.4.1        ggbeeswarm_0.7.2         DBI_1.2.3               
+ [40] jquerylib_0.1.4          smoother_1.3             withr_3.0.2             
+ [43] git2r_0.36.2             corpcor_1.6.10           reformulas_0.4.0        
+ [46] class_7.3-23             rprojroot_2.0.4          lmtest_0.9-40           
+ [49] formatR_1.14             htmlwidgets_1.6.4        fs_1.6.5                
+ [52] ggrepel_0.9.6            labeling_0.4.3           fANCOVA_0.6-1           
+ [55] SparseArray_1.6.2        DESeq2_1.46.0            ranger_0.17.0           
+ [58] DEoptimR_1.1-3-1         reticulate_1.41.0        hexbin_1.28.5           
+ [61] zoo_1.8-13               XVector_0.46.0           knitr_1.49              
+ [64] ggplot.multistats_1.0.1  UCSC.utils_1.2.0         RhpcBLASctl_0.23-42     
+ [67] timechange_0.3.0         foreach_1.5.2            patchwork_1.3.0         
+ [70] caTools_1.18.3           data.table_1.17.0        ggtree_3.14.0           
+ [73] R.oo_1.27.0              RSpectra_0.16-2          irlba_2.3.5.1           
+ [76] fastDummies_1.7.5        gridGraphics_0.5-1       lazyeval_0.2.2          
+ [79] yaml_2.3.10              survival_3.8-3           scattermore_1.2         
+ [82] crayon_1.5.3             RcppAnnoy_0.0.22         RColorBrewer_1.1-3      
+ [85] progressr_0.15.1         later_1.4.1              ggridges_0.5.6          
+ [88] codetools_0.2-20         GlobalOptions_0.1.2      aod_1.3.3               
+ [91] KEGGREST_1.46.0          Rtsne_0.17               shape_1.4.6.1           
+ [94] limma_3.62.2             pkgconfig_2.0.3          TMB_1.9.16              
+ [97] spatstat.univar_3.1-1    mathjaxr_1.6-0           EnvStats_3.0.0          
+[100] aplot_0.2.5              scatterplot3d_0.3-44     spatstat.sparse_3.1-0   
+[103] ape_5.8-1                xtable_1.8-4             car_3.1-3               
+[106] plyr_1.8.9               httr_1.4.7               rbibutils_2.3           
+[109] tools_4.4.2              globals_0.16.3           beeswarm_0.4.0          
+[112] broom_1.0.7              nlme_3.1-167             lambda.r_1.2.4          
+[115] lme4_1.1-36              digest_0.6.37            numDeriv_2016.8-1.1     
+[118] Matrix_1.7-2             farver_2.1.2             tzdb_0.4.0              
+[121] remaCor_0.0.18           reshape2_1.4.4           yulab.utils_0.2.0       
+[124] glue_1.8.0               cachem_1.1.0             polyclip_1.10-7         
+[127] generics_0.1.3           Biostrings_2.74.1        mvtnorm_1.3-3           
+[130] parallelly_1.44.0        mnormt_2.1.1             statmod_1.5.0           
+[133] RcppHNSW_0.6.0           ScaledMatrix_1.14.0      carData_3.0-5           
+[136] minqa_1.2.8              pbapply_1.7-2            spam_2.11-1             
+[139] gson_0.1.0               gtools_3.9.5             ggsignif_0.6.4          
+[142] RcppEigen_0.3.4.0.2      shiny_1.10.0             GenomeInfoDbData_1.2.13 
+[145] glmmTMB_1.1.10           R.utils_2.13.0           memoise_2.0.1           
+[148] rmarkdown_2.29           scales_1.3.0             R.methodsS3_1.8.2       
+[151] future_1.40.0            RANN_2.6.2               spatstat.data_3.1-4     
+[154] rstudioapi_0.17.1        cluster_2.1.8            whisker_0.4.1           
+[157] mutoss_0.1-13            spatstat.utils_3.1-2     hms_1.1.3               
+[160] fitdistrplus_1.2-2       munsell_0.5.1            cowplot_1.1.3           
+[163] colorspace_2.1-1         rlang_1.1.5              xts_0.14.1              
+[166] dotCall64_1.2            ggtangle_0.0.6           laeken_0.5.3            
+[169] mgcv_1.9-1               xfun_0.51                e1071_1.7-16            
+[172] TH.data_1.1-3            iterators_1.0.14         abind_1.4-8             
+[175] GOSemSim_2.32.0          treeio_1.30.0            futile.options_1.0.1    
+[178] bitops_1.0-9             Rdpack_2.6.2             promises_1.3.2          
+[181] RSQLite_2.3.9            qvalue_2.38.0            sandwich_3.1-1          
+[184] fgsea_1.32.2             DelayedArray_0.32.0      proxy_0.4-27            
+[187] GO.db_3.20.0             compiler_4.4.2           prettyunits_1.2.0       
+[190] boot_1.3-31              beachmat_2.22.0          listenv_0.9.1           
+[193] Rcpp_1.0.14              edgeR_4.4.2              workflowr_1.7.1         
+[196] BiocSingular_1.22.0      tensor_1.5               MASS_7.3-64             
+[199] progress_1.2.3           BiocParallel_1.40.0      babelgene_22.9          
+[202] spatstat.random_3.3-2    R6_2.6.1                 fastmap_1.2.0           
+[205] multcomp_1.4-28          fastmatch_1.1-6          rstatix_0.7.2           
+[208] vipor_0.4.7              TTR_0.24.4               ROCR_1.0-11             
+[211] TFisher_0.2.0            rsvd_1.0.5               vcd_1.4-13              
+[214] nnet_7.3-20              gtable_0.3.6             KernSmooth_2.23-26      
+[217] miniUI_0.1.1.1           deldir_2.0-4             htmltools_0.5.8.1       
+[220] ggthemes_5.1.0           bit64_4.6.0-1            spatstat.explore_3.3-4  
+[223] lifecycle_1.0.4          blme_1.0-6               nloptr_2.1.1            
+[226] sass_0.4.9               vctrs_0.6.5              robustbase_0.99-4-1     
+[229] spatstat.geom_3.3-5      sn_2.1.1                 ggfun_0.1.8             
+[232] future.apply_1.11.3      bslib_0.9.0              pillar_1.10.1           
+[235] gplots_3.2.0             pcaMethods_1.98.0        locfit_1.5-9.11         
+[238] jsonlite_1.9.0           GetoptLong_1.0.5        </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
