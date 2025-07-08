@@ -8,14 +8,23 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Merge-QC-UMAPS
-Merge and QC
-[link](Merge-QC-UMAPS.html)
+## Merging
+Merge
+[link](Merging.html)
+
+##QC-UMAPS
+QC and UMAP
+[link](QC-UMAPS.html)
+
+## MarkerGenes
+Marker genes
+[link](MarkerGenes.html)
 
 ## RelativeAbundances
 Relative abundances
 [link](RelativeAbundances.html)
 
-## MarkerGenes
-Marker genes
-[link](MarkerGenes.html)
+##Clinical Phenotypes
+Clinical Phenotypes
+[link](Clinical-Phenotypes.html)
+
